@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleziona il tuo personaggio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .character {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .description {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+        .controls {
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Seleziona il tuo personaggio</h1>
+    <div class="character" id="character-name">Erik</div>
+    <div class="description" id="character-description">
+        Erik ha il potere di avere tutti i contatti di Collegno e Basse Dora, e con uno schiocco di dita li fa apparire tutti. 
+        La sua cassa aumenta la sua aura.
+    </div>
+    <div class="controls">
+        <button onclick="previousCharacter()">←</button>
+        <button onclick="nextCharacter()">→</button>
+    </div>
+</div>
+
+<script>
+    // Definizione dei personaggi e delle loro descrizioni
+    const characters = [
+        {
+            name: "Erik",
+            description: "Erik ha il potere di avere tutti i contatti di Collegno e Basse Dora, e con uno schiocco di dita li fa apparire tutti. La sua cassa aumenta la sua aura."
+        },
+        {
+            name: "Devid",
+            description: "Devid può diventare una palla per difendersi dai nemici. Preferibilmente non farlo arrabbiare."
+        },
+        {
+            name: "Simone",
+            description: "Simone conosce metà barriera di Milano e ha una forza incredibile. Usare troppa forza gli farebbe abusare di chiunque."
+        },
+        {
+            name: "Bryan",
+            description: "Bryan ha tantissimo fatturato e con i suoi 7 anni di boxe è molto agile e forte. Se non paghi il 'pizzo', ti farà patire le pene dell'inferno. Il suo motto è: 'mo lo sgonfio', riferito a Devid."
+        },
+        {
+            name: "Nathan",
+            description: "Nathan, il bassino con la bici, ha il potere di rompere le palle. Ti farà bucare le ruote della bici e distruggerà i tuoi testicoli."
+        },
+        {
+            name: "Gabriele (Boss Finale)",
+            description: "Gabriele fa karate e tira calci potentissimi. Sfidarlo è morte certa. Può spaccare i denti a chiunque infastidisca lui o i suoi amici."
+        },
+        {
+            name: "Wen",
+            description: "Wen può diventare invisibile nell'oscurità. È il boss del ballo, e farlo arrabbiare fa molta paura."
+        },
+        {
+            name: "Dalia",
+            description: "Dalia, sorella di Wen, diventa invisibile nell'oscurità. Viene bullizzata da Bryan, ma ha un bastone che picchia molto forte."
+        },
+        {
+            name: "Gotte",
+            description: "Gotte è un calciatore professionista, molto agile. Il suo potere è far apparire un gesso che lo rende immune ai colpi dei nemici. È il fidanzato di Bea."
+        },
+        {
+            name: "Bea",
+            description: "Bea ha il superpotere di tirare schiaffi molto forti. Non farla arrabbiare, o rischi di diventare sterile."
+        },
+        {
+            name: "Erika",
+            description: "Erika ha un urlo che stordisce fino a 500 metri di distanza. Chi viene stordito va incontro a una morte certa."
+        }
+    ];
+
+    // Indice del personaggio attuale
+    let currentCharacter = 0;
+
+    // Funzione per aggiornare il personaggio mostrato
+    function updateCharacter() {
+        document.getElementById("character-name").textContent = characters[currentCharacter].name;
+        document.getElementById("character-description").textContent = characters[currentCharacter].description;
+    }
+
+    // Funzione per andare al personaggio precedente
+    function previousCharacter() {
+        currentCharacter = (currentCharacter - 1 + characters.length) % characters.length;
+        updateCharacter();
+    }
+
+    // Funzione per andare al personaggio successivo
+    function nextCharacter() {
+        currentCharacter = (currentCharacter + 1) % characters.length;
+        updateCharacter();
+    }
+</script>
+
+</body>
+</html>
